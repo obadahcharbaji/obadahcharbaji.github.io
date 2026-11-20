@@ -1,62 +1,105 @@
 
-<section class="section expertise" id="expertise" aria-labelledby="expertise-title">
-  <div class="container toolkit-window-layout">
-
-    <!-- Left side: Heading -->
-    <div class="toolkit-intro">
-      <p class="section-index">03 / TECHNICAL TOOLKIT</p>
-
-      <h2 id="expertise-title">
-        My engineering <em>toolkit.</em>
-      </h2>
-
-      <p>
-        Technical foundations and practical skills developed
-        through coursework, projects, and troubleshooting.
-      </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Obadah Charbaji — Electrical Engineering graduate. Engineering portfolio featuring electrical systems, engineering design, embedded electronics, controls, automation, and hands-on technical projects." />
+  <meta name="theme-color" content="#009EFF" />
+  <title>Obadah Charbaji</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header" id="top">
+    <div class="container nav-shell">
+      <a class="brand" href="#top" aria-label="Back to top — OC Electrical Engineering"><span class="brand-symbol brand-oc" aria-hidden="true">OC<span class="brand-period">.</span></span><span class="brand-text">ELECTRICAL ENGINEERING</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#expertise">Expertise</a><a href="#experience">Experience</a><a class="nav-contact" href="#contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
+  </header>
 
-    <!-- Right side: Four boxes -->
-    <div class="expertise-grid">
-
-      <div class="expertise-card reveal">
-        <span class="expertise-icon">01</span>
-        <h3>Electrical Engineering</h3>
-        <p>
-          Circuit analysis, electronics, electrical wiring,
-          sensors, control systems, and engineering fundamentals.
-        </p>
+  <main id="main">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="status-dot"></span> ELECTRICAL ENGINEERING · WINDSOR, ON</div>
+          <p class="hero-kicker">DESIGN. BUILD. IMPROVE.</p>
+          <h1 id="hero-title">Turning ideas into <em>practical solutions.</em></h1>
+          <p class="hero-description">I'm <strong>Obadah Charbaji</strong>, an Electrical Engineering graduate with experience in electrical systems, embedded electronics, hardware-software integration, and technical troubleshooting. I'm especially interested in controls and automation, and enjoy turning engineering concepts into practical solutions.</p>
+          <div class="hero-actions"><a class="button button-dark" href="#projects">Explore my projects <span aria-hidden="true">↗</span></a><a class="button button-outline" href="#contact">Get in touch <span aria-hidden="true">→</span></a></div>
+          <div class="hero-meta"><span>University of Windsor</span><span class="meta-divider"></span><span>BASc · Honours Electrical Engineering</span></div>
+        </div>
+        <div class="hero-visual graduation-hero reveal">
+          <img src="graduation-photo.png" alt="Obadah Charbaji at the University of Windsor Electrical Engineering graduation ceremony" width="1004" height="1504" fetchpriority="high">
+        </div>
       </div>
+      <div class="container marquee" aria-label="Focus areas"><span>ELECTRICAL ENGINEERING</span><i>✳</i><span>CONTROLS & AUTOMATION</span><i>✳</i><span>EMBEDDED SYSTEMS</span><i>✳</i><span>TESTING & VALIDATION</span><i>✳</i><span>ENGINEERING DESIGN</span></div>
+    </section>
 
-      <div class="expertise-card reveal">
-        <span class="expertise-icon">02</span>
-        <h3>Testing &amp; Troubleshooting</h3>
-        <p>
-          Functional testing, system verification, fault isolation,
-          hardware diagnostics, and technical problem-solving.
-        </p>
+    <section class="section about" id="about" aria-labelledby="about-title"><div class="container about-grid"><div class="section-index">01 / ABOUT</div><div class="about-content reveal"><p class="section-kicker">THE ENGINEER BEHIND THE WORK</p><h2 id="about-title">Driven by <em>curiosity,</em><br/> focused on <em>solutions.</em></h2><p>My background spans electrical circuits, electronics, control systems, embedded hardware, and engineering design. Through academic projects, I've gained hands-on experience with motors, sensors, microcontrollers, communication interfaces, system integration, and technical testing.</p><p>I enjoy understanding how systems work, troubleshooting problems, and developing solutions that perform reliably in practice. I'm exploring entry-level electrical engineering opportunities across design, testing, validation, and systems integration, with a particular interest in controls and automation.</p><div class="about-facts"><div><span class="fact-value">2026</span><span class="fact-label">ENGINEERING GRADUATE</span></div><div><span class="fact-value">2</span><span class="fact-label">FEATURED PROJECTS</span></div><div><span class="fact-value">BASc</span><span class="fact-label">ELECTRICAL ENGINEERING</span></div></div></div></div></section>
+
+    <section class="section projects" id="projects" aria-labelledby="projects-title"><div class="container"><div class="section-header"><div><p class="section-index">02 / SELECTED WORK</p><h2 id="projects-title">From concept to <em>prototype.</em></h2></div><p>Two university projects highlighting engineering design, electronics, integration, programming, and hands-on testing.</p></div>
+      <article class="project-card project-card-robot reveal">
+        <div class="robot-project-media">
+          <div class="project-diagram-label">PROJECT 01 / ELECTROMECHANICAL CONTROLS</div>
+          <figure class="robot-photo robot-project-photo">
+            <img src="robotic-arm.jpg.png" alt="University of Windsor rover and robotic arm during laboratory testing" loading="lazy" width="1184" height="1264">
+          </figure>
+        </div>
+        <div class="robot-project-video">
+          <div class="robot-video-heading"><span>ROBOTIC ARM DEMONSTRATION</span></div>
+          <video controls playsinline preload="metadata" poster="robotic-arm.jpg.png" aria-label="Robotic arm demonstration video">
+            <source src="robotic-arm-demo.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+            <a href="robotic-arm-demo.mp4">Download the demonstration video</a>.
+          </video>
+        </div>
+        <div class="project-content robot-project-description">
+          <div class="tag-row"><span>CAPSTONE</span><span>CONTROL SYSTEMS</span></div>
+          <h3>Robotic Arm<br/>Control Systems</h3>
+          <p>Collaborated on the electrical and controls integration of a robotic arm for a university rover project, working within a two-person controls subteam.</p>
+          <ul>
+            <li>Integrated BLDC motors, motor controllers, encoders, wiring, and communication interfaces.</li>
+            <li>Investigated controller faults, power issues, encoder feedback, and CAN communication.</li>
+            <li>Performed component-level and system-level testing and supported URDF modeling.</li>
+          </ul>
+          <div class="project-tech">MOTOR CONTROL <span>·</span> ENCODERS <span>·</span> CAN <span>·</span> ROS 2</div>
+        </div>
+      </article>
+      <article class="project-card project-card-reverse reveal"><div class="project-visual parking-card parking-video-card">
+  <div class="project-diagram-label">PROJECT 02 / EMBEDDED SYSTEM DESIGN</div>
+  <video controls playsinline preload="metadata" aria-label="Parking Buddy project demonstration" width="480" height="852">
+    <source src="parking-buddy-demo.mp4" type="video/mp4">
+    Your browser does not support this video. <a href="parking-buddy-demo.mp4">Download the Parking Buddy demonstration</a>.
+  </video>
+  <span class="project-number">02</span>
+</div><div class="project-content"><div class="tag-row"><span>ENGINEERING DESIGN</span><span>EMBEDDED SYSTEMS</span></div><h3>Parking Buddy</h3><p>Created a parking guidance prototype that uses adjustable laser sensors and an 8×8 LED matrix to provide an intuitive visual display of vehicle positioning.</p><ul><li>Connected sensor feedback with Arduino-based display behavior.</li><li>Programmed an animated vehicle indicator to show forward or backward movement.</li><li>Built a portable system with a replaceable 9V battery and a 3D-printed, Velcro-mounted dashboard enclosure.</li></ul><div class="project-tech">ARDUINO IDE <span>·</span> SENSORS <span>·</span> LED MATRIX <span>·</span> PROTOTYPING</div></div></article>
+    </div></section>
+
+    <section class="section expertise" id="expertise" aria-labelledby="expertise-title">
+      <div class="container toolkit-window-layout">
+        <div class="toolkit-intro">
+          <p class="section-index">03 / TECHNICAL TOOLKIT</p>
+          <h2 id="expertise-title">My engineering <em>toolkit.</em></h2>
+          <p>Technical foundations and practical skills developed through coursework, projects, and troubleshooting.</p>
+        </div>
+        <div class="expertise-grid">
+          <div class="expertise-card reveal"><span class="expertise-icon">01</span><h3>Electrical Engineering</h3><p>Circuit analysis, electronics, electrical wiring, sensors, control systems, and engineering fundamentals.</p></div>
+          <div class="expertise-card reveal"><span class="expertise-icon">02</span><h3>Testing &amp; Troubleshooting</h3><p>Functional testing, system verification, fault isolation, hardware diagnostics, and technical problem-solving.</p></div>
+          <div class="expertise-card reveal"><span class="expertise-icon">03</span><h3>Controls &amp; Integration</h3><p>Motor controllers, encoder feedback, microcontrollers, CAN communication, hardware-software integration, and prototyping.</p></div>
+          <div class="expertise-card reveal"><span class="expertise-icon">04</span><h3>Software &amp; Engineering Tools</h3><p>MATLAB, Simulink, LTspice, Arduino IDE, Microsoft Office, basic AutoCAD, and project experience with ROS 2 and URDF.</p></div>
+        </div>
       </div>
+    </section>
 
-      <div class="expertise-card reveal">
-        <span class="expertise-icon">03</span>
-        <h3>Controls &amp; Integration</h3>
-        <p>
-          Motor controllers, encoder feedback, microcontrollers,
-          CAN communication, hardware-software integration,
-          and prototyping.
-        </p>
-      </div>
+    <section class="section experience" id="experience" aria-labelledby="experience-title"><div class="container"><div class="section-header"><div><p class="section-index">04 / EXPERIENCE</p><h2 id="experience-title">Technical experience, <em>practical skills.</em></h2></div><p>Professional experience in technical troubleshooting, customer support, teamwork, and communicating solutions clearly.</p></div><div class="timeline"><div class="timeline-item reveal"><div class="timeline-date">DEC 2025 — PRESENT</div><div><h3>Hybrid Technical Associate</h3><p class="timeline-company">Jump+ · Windsor, Ontario</p><p>Diagnose hardware and software concerns, support device configuration, document findings, and communicate practical solutions to customers and colleagues.</p></div></div><div class="timeline-item reveal"><div class="timeline-date">AUG 2024 — DEC 2025</div><div><h3>Certified Computer Sales Associate</h3><p class="timeline-company">Best Buy Canada · Windsor, Ontario</p><p>Evaluated hardware requirements and compatibility, supported troubleshooting, explained technical specifications, and mentored newer associates.</p></div></div><div class="timeline-item reveal"><div class="timeline-date">OCT 2025</div><div><h3>Technology Job Shadow</h3><p class="timeline-company">Rocket Innovation Studio · Windsor, Ontario</p><p>Observed how technical teams work from customer requirements through evaluation, collaboration, and solution development.</p></div></div></div></div></section>
 
-      <div class="expertise-card reveal">
-        <span class="expertise-icon">04</span>
-        <h3>Software &amp; Engineering Tools</h3>
-        <p>
-          MATLAB, Simulink, LTspice, Arduino IDE,
-          Microsoft Office, basic AutoCAD, and project
-          experience with ROS 2 and URDF.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
+    <section class="section contact" id="contact" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="section-index">05 / CONTACT</p><h2 id="contact-title">Let's build what's <em>next.</em></h2><p>I'm interested in opportunities across electrical engineering, particularly controls and automation. I'd be glad to connect about a role, project, or technical challenge.</p><a class="button button-light" href="mailto:obadahcharbaji@gmail.com?subject=Engineering%20Opportunity">Email me <span aria-hidden="true">↗</span></a></div><div class="contact-details"><div><span>EMAIL</span><a href="mailto:obadahcharbaji@gmail.com">obadahcharbaji@gmail.com</a></div><div><span>LINKEDIN</span><a class="linkedin-profile-button" href="https://www.linkedin.com/in/obadah-charbaji/" target="_blank" rel="noopener noreferrer" aria-label="View Obadah Charbaji’s LinkedIn profile (opens in a new tab)">View Profile <span aria-hidden="true">↗</span></a></div><div><span>LOCATION</span><p>Windsor, Ontario, Canada</p></div></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Obadah Charbaji</span><span>DESIGNED FOR THE NEXT CHALLENGE.</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
