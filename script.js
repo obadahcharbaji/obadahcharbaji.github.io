@@ -59,51 +59,58 @@
   }));
 
 
-  // signal wave with a red ball riding it
+  // hero signal: starts wild, damps out, and flatlines at the right edge. Plays once.
   const cv = $('#wave');
   if (cv && cv.getContext) {
     const ctx = cv.getContext('2d');
-    let w = 0, h = 0, raf = 0, visible = true, t0 = performance.now();
     const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-    const size = () => {
+    const DURATION = 5200;
+    let w = 0, h = 0, pts = [], start = 0, raf = 0, finished = false;
+
+    // seeded noise so the shape is the same every visit
+    const rng = (s => () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296)(7);
+    const noise = Array.from({ length: 400 }, () => rng() * 2 - 1);
+    const smooth = (x) => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return noise[i % 400] * (1 - u) + noise[(i + 1) % 400] * u; };
+
+    const build = () => {
       const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
       w = r.width; h = r.height; cv.width = w * d; cv.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
+      const mid = h / 2, pad = 14, usable = w - pad * 2, n = Math.ceil(usable / 2);
+      pts = [];
+      for (let i = 0; i <= n; i++) {
+        const u = i / n, x = pad + u * usable;
+        const calm = Math.pow(1 - Math.min(Math.max((u - 0.05) / 0.8, 0), 1), 2.2);   // wild at left, flat at right
+        const wob = Math.sin(x * 0.085) * 0.55 + Math.sin(x * 0.21 + 1.3) * 0.35 + smooth(x * 0.09) * 0.8 + smooth(x * 0.33 + 50) * 0.35;
+        const swing = Math.max(-1, Math.min(1, wob * (0.35 + 0.65 * calm) * 1.05));
+        pts.push([x, mid - swing * calm * h * 0.4]);
+      }
     };
-    const draw = now => {
-      const t = reduce ? 1.2 : (now - t0) / 1000;
-      const grow = reduce ? 1 : 1 - Math.pow(1 - Math.min(t / 1.4, 1), 4);   // wave eases in once
-      const mid = h / 2, amp = h * 0.3 * grow;
-      const wl = w < 600 ? 230 : 380, k = (Math.PI * 2) / wl, speed = 1.6;  // rad/s
-      const f = (x, a, ph, kk) => mid + a * Math.sin(kk * x + ph + speed * t);
+
+    const frame = (p) => {
+      const mid = h / 2;
       ctx.clearRect(0, 0, w, h);
-      // centre line
-      ctx.strokeStyle = css('--line'); ctx.lineWidth = 1.5; ctx.setLineDash([]);
+      ctx.lineWidth = 1.5; ctx.strokeStyle = css('--blue-deep'); ctx.globalAlpha = .5; ctx.setLineDash([6, 6]);
       ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
-      // faint second wave
-      ctx.strokeStyle = css('--blue'); ctx.globalAlpha = .45; ctx.lineWidth = 2;
-      ctx.beginPath();
-      for (let x = 0; x <= w; x += 3) { const y = f(x, amp * .6, 1.7, k * 1.6); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
-      ctx.stroke(); ctx.globalAlpha = 1;
-      // main wave
-      ctx.strokeStyle = css('--ink'); ctx.lineWidth = 3.5; ctx.lineJoin = 'round';
-      ctx.beginPath();
-      for (let x = 0; x <= w; x += 3) { const y = f(x, amp, 0, k); x ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.setLineDash([]); ctx.globalAlpha = 1;
+      const last = Math.max(1, Math.floor(p * (pts.length - 1)));
+      ctx.strokeStyle = css('--ink'); ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
+      for (let i = 1; i <= last; i++) ctx.lineTo(pts[i][0], pts[i][1]);
       ctx.stroke();
-      // ball rides the main wave; dashed drop line to the centre line
-      const bx = Math.min(w * 0.3, 360), by = f(bx, amp, 0, k);
-      ctx.strokeStyle = css('--blue-deep'); ctx.lineWidth = 1.5; ctx.setLineDash([4, 5]);
-      ctx.beginPath(); ctx.moveTo(bx, mid); ctx.lineTo(bx, by); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle = css('--red'); ctx.beginPath(); ctx.arc(bx, by, 10, 0, Math.PI * 2); ctx.fill();
-      if (!reduce && visible) raf = requestAnimationFrame(draw);
+      const tip = pts[last];
+      ctx.fillStyle = css('--red'); ctx.beginPath(); ctx.arc(tip[0], tip[1], 10, 0, Math.PI * 2); ctx.fill();
     };
-    size(); draw(performance.now());
-    addEventListener('resize', () => { size(); if (reduce) draw(performance.now()); });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(([e]) => {
-        visible = e.isIntersecting;
-        if (visible && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }
-      }).observe(cv);
-    }
+
+    const tick = now => {
+      if (!start) start = now;
+      const t = Math.min((now - start) / DURATION, 1);
+      frame(t < 1 ? t * (2 - t) * 0.35 + t * 0.65 : 1);   // brisk start, gentle landing
+      if (t < 1) raf = requestAnimationFrame(tick); else finished = true;
+    };
+
+    build();
+    if (reduce) { frame(1); finished = true; } else raf = requestAnimationFrame(tick);
+    addEventListener('resize', () => { build(); if (finished) frame(1); });
   }
 
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
