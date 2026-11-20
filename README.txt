@@ -1,1 +1,2 @@
-Click either OC. or ELECTRICAL ENGINEERING in the top-left header to smoothly return to the top of the page. All other site content is unchanged.
+Upload everything in this folder together (index.html, styles.css, script.js, assets/).
+Before launch, update the canonical URL and og:image URL in index.html to your real domain (og:image should be a full https:// address for link previews).
