@@ -168,8 +168,8 @@ a{color:inherit}
 
 /* contact */
 .contact{background:var(--blue-deep);color:var(--white);padding:clamp(80px,11vw,140px) 0}
-.contact h2{font:800 clamp(38px,6.4vw,88px)/1 var(--head);letter-spacing:-.055em;max-width:12em}
-.contact .wrap>p:first-of-type{margin-top:22px;font-size:19px;color:#E3F1FB}
+.contact h2{font:800 clamp(38px,5.2vw,72px)/1.02 var(--head);letter-spacing:-.05em;max-width:11em}
+.contact-main>p:first-of-type{margin-top:22px;font-size:19px;color:#E3F1FB}
 .contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .email-line{margin-top:30px;font:600 clamp(18px,2.4vw,26px)/1.3 var(--head);letter-spacing:-.02em;overflow-wrap:anywhere}
 
@@ -178,6 +178,40 @@ a{color:inherit}
 .site-footer a{color:var(--white);text-underline-offset:4px;padding:10px 0}
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:var(--white);padding:12px 20px;border-radius:999px;font-weight:500;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:80}
 .toast.show{opacity:1;transform:translate(-50%,0)}
+
+
+/* clipboard: a pencil ticks off the to-do list */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(32px,6vw,88px);align-items:center}
+.clip{justify-self:center;width:100%;max-width:340px;transform:rotate(3deg);filter:drop-shadow(0 22px 26px rgba(6,20,34,.35))}
+.clip-svg{display:block;width:100%;height:auto;overflow:visible}
+.clip-title{font:800 26px var(--head);letter-spacing:-.04em;fill:var(--ink)}
+.task{font:700 19px var(--head);letter-spacing:-.03em;fill:var(--ink)}
+.rule{stroke:#DCE9F3;stroke-width:1.5}
+.box{fill:none;stroke:var(--ink);stroke-width:3}
+.tick{fill:none;stroke:var(--red-btn);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.strike{stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1}
+.pencil{transform:translate(300px,60px)}
+@keyframes pencilmove{0.0%{transform:translate(300px,60px);animation-timing-function:ease-in-out}6.916%{transform:translate(300px,60px);animation-timing-function:ease-in-out}14.523%{transform:translate(69px,150px);animation-timing-function:linear}16.321%{transform:translate(76px,158px);animation-timing-function:linear}20.47%{transform:translate(91px,141px);animation-timing-function:ease-in-out}25.588%{transform:translate(91px,141px);animation-timing-function:ease-in-out}33.195%{transform:translate(69px,215px);animation-timing-function:linear}34.993%{transform:translate(76px,223px);animation-timing-function:linear}39.142%{transform:translate(91px,206px);animation-timing-function:ease-in-out}44.26%{transform:translate(91px,206px);animation-timing-function:ease-in-out}51.867%{transform:translate(69px,280px);animation-timing-function:linear}53.665%{transform:translate(76px,288px);animation-timing-function:linear}57.815%{transform:translate(91px,271px);animation-timing-function:ease-in-out}62.932%{transform:translate(91px,271px);animation-timing-function:ease-in-out}70.539%{transform:translate(69px,345px);animation-timing-function:linear}72.337%{transform:translate(76px,353px);animation-timing-function:linear}76.487%{transform:translate(91px,336px);animation-timing-function:ease-in-out}86.169%{transform:translate(91px,336px);animation-timing-function:ease-in-out}97.234%{transform:translate(292px,428px);animation-timing-function:ease-in-out}100.0%{transform:translate(292px,428px);animation-timing-function:ease-in-out}}
+@keyframes drawit{to{stroke-dashoffset:0}}
+@keyframes dimtask{to{fill:#7C8FA1}}
+@keyframes redtask{to{fill:var(--red-btn)}}
+.clip.is-on .pencil{animation:pencilmove 7.23s both}
+.clip.is-on .k0{animation:drawit .43s linear 1.05s both}
+.clip.is-on .k1{animation:drawit .43s linear 2.40s both}
+.clip.is-on .k2{animation:drawit .43s linear 3.75s both}
+.clip.is-on .k3{animation:drawit .43s linear 5.10s both}
+.clip.is-on .s0{animation:drawit .3s ease-out 1.48s both}
+.clip.is-on .t0{animation:dimtask .3s ease-out 1.48s both}
+.clip.is-on .s1{animation:drawit .3s ease-out 2.83s both}
+.clip.is-on .t1{animation:dimtask .3s ease-out 2.83s both}
+.clip.is-on .s2{animation:drawit .3s ease-out 4.18s both}
+.clip.is-on .t2{animation:dimtask .3s ease-out 4.18s both}
+.clip.is-on .t3{animation:redtask .3s ease-out 5.40s both}
+.clip.is-reset *{animation:none!important}
+.clip.is-static .tick,.clip.is-static .strike{stroke-dashoffset:0}
+.clip.is-static .pencil{transform:translate(292px,428px)}
+.clip.is-static .t0,.clip.is-static .t1,.clip.is-static .t2{fill:#7C8FA1}.clip.is-static .t3{fill:var(--red-btn)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}.clip{justify-self:start;max-width:300px;margin-top:8px}}
 
 /* responsive */
 @media(max-width:900px){
@@ -367,7 +401,7 @@ a{color:inherit}
     </section>
 
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="wrap">
+      <div class="wrap contact-grid"><div class="contact-main">
         <h2 id="contact-title">Have a role, a project or a hard problem?</h2>
         <p>I'd like to hear about it. Email is the fastest way to reach me.</p>
         <div class="contact-actions">
@@ -376,7 +410,37 @@ a{color:inherit}
           <a class="btn btn-ghost-light" href="https://www.linkedin.com/in/obadah-charbaji/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="sr-only">(opens in a new tab)</span></a>
         </div>
         <p class="email-line">obadahcharbaji@gmail.com</p>
-      </div>
+      </div><div class="clip" aria-hidden="true"><svg class="clip-svg" viewBox="0 0 360 440" role="presentation" focusable="false">
+  <rect x="14" y="24" width="332" height="412" rx="18" fill="#0E1A26"/>
+  <rect x="32" y="48" width="296" height="374" rx="8" fill="#FFFFFF"/>
+  <rect x="118" y="8" width="124" height="52" rx="12" fill="#C9DAE8"/>
+  <rect x="136" y="20" width="88" height="14" rx="7" fill="#8FA9BE"/>
+  <text class="clip-title" x="62" y="106">To do</text>
+    <line class="rule" x1="52" y1="180" x2="318" y2="180"/>
+    <rect class="box" x="62" y="133" width="34" height="34" rx="6"/>
+    <text class="task t0" x="114" y="157">Integrate motors</text>
+    <line class="strike s0" x1="114" y1="151" x2="260" y2="151" pathLength="1"/>
+    <path class="tick k0" pathLength="1" d="M69 150 L76 158 L91 141"/>
+    <line class="rule" x1="52" y1="245" x2="318" y2="245"/>
+    <rect class="box" x="62" y="198" width="34" height="34" rx="6"/>
+    <text class="task t1" x="114" y="222">Debug the CAN bus</text>
+    <line class="strike s1" x1="114" y1="216" x2="260" y2="216" pathLength="1"/>
+    <path class="tick k1" pathLength="1" d="M69 215 L76 223 L91 206"/>
+    <line class="rule" x1="52" y1="310" x2="318" y2="310"/>
+    <rect class="box" x="62" y="263" width="34" height="34" rx="6"/>
+    <text class="task t2" x="114" y="287">Test the system</text>
+    <line class="strike s2" x1="114" y1="281" x2="260" y2="281" pathLength="1"/>
+    <path class="tick k2" pathLength="1" d="M69 280 L76 288 L91 271"/>
+    <line class="rule" x1="52" y1="375" x2="318" y2="375"/>
+    <rect class="box" x="62" y="328" width="34" height="34" rx="6"/>
+    <text class="task t3" x="114" y="352">Your next project</text>
+    <path class="tick k3" pathLength="1" d="M69 345 L76 353 L91 336"/>
+  <g class="pencil"><g transform="rotate(26)">
+    <polygon points="0,0 -7,-26 7,-26" fill="#F1D9B5"/><polygon points="0,0 -2.6,-9.5 2.6,-9.5" fill="#0E1A26"/>
+    <rect x="-7" y="-122" width="14" height="96" fill="#F2B705"/><rect x="-7" y="-122" width="4" height="96" fill="#D99F00"/>
+    <rect x="-7" y="-134" width="14" height="12" fill="#B8C7D4"/><rect x="-7" y="-152" width="14" height="18" rx="4" fill="#FF7A66"/>
+  </g></g>
+</svg></div></div>
     </section>
   </main>
 
@@ -444,57 +508,71 @@ a{color:inherit}
   }));
 
 
-  // hero signal: starts wild, damps out, and flatlines at the right edge. Plays once.
+  // hero signal: a damped sine on x/y axes. High amplitude, then low, then flat. Replays on every entry.
   const cv = $('#wave');
   if (cv && cv.getContext) {
     const ctx = cv.getContext('2d');
-    const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-    const DURATION = 8500;
-    let w = 0, h = 0, pts = [], start = 0, raf = 0, finished = false;
+    const DURATION = 8500, RIGHT = 36, PAD = 16;
+    let w = 0, h = 0, pts = [], start = 0, raf = 0, timer = 0, finished = false, col = {};
+    const readColors = () => {          // read once, not every frame (this was the lag)
+      const s = getComputedStyle(document.documentElement), g = n => s.getPropertyValue(n).trim();
+      col = { ink: g('--ink'), red: g('--red'), axis: g('--muted'), body: g('--body') };
+    };
 
     const build = () => {
       const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
-      w = r.width; h = r.height; cv.width = w * d; cv.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
-      const mid = h / 2, pad = 14, usable = w - pad * 2, n = Math.ceil(usable / 2);
-      const wl = w < 600 ? 110 : 150, k = (Math.PI * 2) / wl;            // one steady frequency
+      w = r.width; h = r.height; cv.width = Math.round(w * d); cv.height = Math.round(h * d); ctx.setTransform(d, 0, 0, d, 0, 0);
+      const mid = h / 2, usable = w - PAD - RIGHT, n = Math.ceil(usable / 2);
+      const wl = w < 600 ? 110 : 150, k = (Math.PI * 2) / wl;
       pts = [];
       for (let i = 0; i <= n; i++) {
-        const u = i / n, x = pad + u * usable;
-        const fade = 1 - Math.pow(Math.max((u - 0.62) / 0.38, 0), 2) * 0;   // (kept simple: exponential decay below)
-        const env = Math.exp(-4.4 * u) * (u > 0.7 ? 1 - (u - 0.7) / 0.3 : 1) * fade;  // high, then low, then flat
-        pts.push([x, mid - Math.sin(k * (x - pad)) * env * h * 0.42]);
+        const u = i / n, x = PAD + u * usable;
+        const env = Math.exp(-4.4 * u) * (u > 0.7 ? 1 - (u - 0.7) / 0.3 : 1);   // high, then low, then flat
+        pts.push([x, mid - Math.sin(k * (x - PAD)) * env * h * 0.36]);
       }
+      readColors();
+    };
+
+    const axes = () => {
+      const mid = h / 2, top = 6, bot = h - 6, xEnd = w - 6;
+      ctx.strokeStyle = col.axis; ctx.fillStyle = col.axis; ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.beginPath(); ctx.moveTo(PAD, bot); ctx.lineTo(PAD, top);                 // y axis
+      ctx.moveTo(PAD, mid); ctx.lineTo(xEnd, mid);                                 // x axis
+      for (let x = PAD + 75; x < xEnd - 14; x += 75) { ctx.moveTo(x, mid - 4); ctx.lineTo(x, mid + 4); }   // x ticks
+      for (const dy of [-h * 0.36, -h * 0.18, h * 0.18, h * 0.36]) { ctx.moveTo(PAD - 4, mid + dy); ctx.lineTo(PAD + 4, mid + dy); }  // y ticks
+      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PAD - 5, top + 9); ctx.lineTo(PAD, top); ctx.lineTo(PAD + 5, top + 9);       // arrowheads
+      ctx.moveTo(xEnd - 9, mid - 5); ctx.lineTo(xEnd, mid); ctx.lineTo(xEnd - 9, mid + 5); ctx.stroke();
+      ctx.font = 'italic 500 14px ' + (col.body || 'sans-serif'); ctx.textBaseline = 'middle';
+      ctx.fillText('y', PAD + 10, top + 6); ctx.fillText('x', xEnd - 12, mid + 18);
     };
 
     const frame = (p) => {
-      const mid = h / 2;
       ctx.clearRect(0, 0, w, h);
-      ctx.lineWidth = 1.5; ctx.strokeStyle = css('--blue-deep'); ctx.globalAlpha = .5; ctx.setLineDash([6, 6]);
-      ctx.beginPath(); ctx.moveTo(0, mid); ctx.lineTo(w, mid); ctx.stroke();
-      ctx.setLineDash([]); ctx.globalAlpha = 1;
+      axes();
       const last = Math.max(1, Math.floor(p * (pts.length - 1)));
-      ctx.strokeStyle = css('--ink'); ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.strokeStyle = col.ink; ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
       ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]);
       for (let i = 1; i <= last; i++) ctx.lineTo(pts[i][0], pts[i][1]);
       ctx.stroke();
       const tip = pts[last];
-      ctx.fillStyle = css('--red'); ctx.beginPath(); ctx.arc(tip[0], tip[1], 10, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = col.red; ctx.beginPath(); ctx.arc(tip[0], tip[1], 10, 0, Math.PI * 2); ctx.fill();
     };
 
     const tick = now => {
       if (!start) start = now;
       const t = Math.min((now - start) / DURATION, 1);
-      frame(0.5 - Math.cos(Math.PI * t) / 2);   // eases in and out
+      frame(1 - Math.pow(1 - t, 1.3));   // moves right away, settles gently at the end
       if (t < 1) raf = requestAnimationFrame(tick); else finished = true;
     };
 
-    const clear = () => ctx.clearRect(0, 0, w, h);
-    const play = () => { cancelAnimationFrame(raf); start = 0; finished = false; raf = requestAnimationFrame(tick); };
+    const clear = () => { ctx.clearRect(0, 0, w, h); axes(); };
+    const play = () => { cancelAnimationFrame(raf); clearTimeout(timer); start = 0; finished = false; clear(); timer = setTimeout(() => { raf = requestAnimationFrame(tick); }, 250); };
     build();
     if (reduce || !('IntersectionObserver' in window)) { frame(1); finished = true; }
     else new IntersectionObserver(([e]) => {
       if (e.isIntersecting) play();
-      else { cancelAnimationFrame(raf); finished = false; clear(); }   // restarts next time it scrolls into view
+      else { cancelAnimationFrame(raf); clearTimeout(timer); finished = false; clear(); }   // restarts next time it scrolls into view
     }, { threshold: 0.6 }).observe(cv);
     addEventListener('resize', () => { build(); if (finished) frame(1); });
   }
@@ -507,6 +585,17 @@ a{color:inherit}
       if (e.isIntersecting) { qs.classList.remove('is-reset'); void qs.getBoundingClientRect(); qs.classList.add('is-on'); }
       else { qs.classList.add('is-reset'); qs.classList.remove('is-on'); }
     }, { threshold: 0.6 }).observe(qs);
+  }
+
+  // clipboard: pencil ticks off the list. Replays every time it scrolls into view.
+  const clip = $('.clip');
+  if (clip) {
+    const fit = () => $$('.strike', clip).forEach((s, i) => { const t = $('.t' + i, clip); if (t) s.setAttribute('x2', 114 + t.getComputedTextLength()); });
+    if (reduce || !('IntersectionObserver' in window)) { fit(); clip.classList.add('is-static'); }
+    else new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { fit(); clip.classList.remove('is-reset'); void clip.getBoundingClientRect(); clip.classList.add('is-on'); }
+      else { clip.classList.add('is-reset'); clip.classList.remove('is-on'); }
+    }, { threshold: 0.6 }).observe(clip);
   }
 
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
