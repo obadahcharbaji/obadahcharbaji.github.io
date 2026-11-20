@@ -10,12 +10,12 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Obadah Charbaji · Electrical Engineer" />
   <meta property="og:description" content="Controls, embedded electronics and testing. Robotic arm control systems and Parking Buddy, with demo videos." />
-  <meta property="og:image" content="assets/og-image.jpg" />
+  <meta property="og:image" content="og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1A26'/%3E%3Ctext x='9' y='44' font-family='Arial' font-weight='800' font-size='32' fill='white'%3EOC%3C/text%3E%3Ccircle cx='53' cy='42' r='5' fill='%23FF2504'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Albert+Sans:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
   <script type="application/ld+json">
@@ -53,23 +53,13 @@
           </div>
         </div>
         <figure class="hero-photo">
-          <picture><source srcset="assets/graduation.webp" type="image/webp"><img src="assets/graduation.jpg" alt="Obadah Charbaji shaking hands on stage at the University of Windsor graduation ceremony, with his name and degree on the screen above" width="960" height="1280" fetchpriority="high"></picture>
+          <picture><img src="graduation-photo.png" alt="Obadah Charbaji shaking hands on stage at the University of Windsor graduation ceremony, with his name and degree on the screen above" width="960" height="1437" fetchpriority="high"></picture>
           <figcaption>BASc Honours Electrical Engineering<br><span>University of Windsor, 2026</span></figcaption>
         </figure>
       </div>
 
       <div class="wrap">
-        <figure class="trace" aria-label="Step response: a signal overshoots, then settles on its setpoint">
-          <svg viewBox="0 0 1200 220" preserveAspectRatio="none" role="img" aria-hidden="true">
-            <line class="trace-axis" x1="0" y1="190" x2="1200" y2="190"/>
-            <line class="trace-set" x1="0" y1="60" x2="1200" y2="60"/>
-            <path class="trace-line" pathLength="1" d="M0,190.0 L15,164.8 L30,112.6 L45,62.9 L60,32.5 L75,24.3 L90,32.1 L105,46.7 L120,60.1 L135,67.9 L150,69.8 L165,67.4 L180,63.3 L195,59.8 L210,57.7 L225,57.3 L240,58.0 L255,59.2 L270,60.1 L285,60.7 L300,60.7 L315,60.5 L330,60.2 L345,59.9 L360,59.8 L375,59.8 L390,59.9 L405,60.0 L420,60.0 L435,60.1 L450,60.1 L465,60.0 L480,60.0 L495,60.0 L510,60.0 L525,60.0 L540,60.0 L555,60.0 L570,60.0 L585,60.0 L600,60.0 L615,60.0 L630,60.0 L645,60.0 L660,60.0 L675,60.0 L690,60.0 L705,60.0 L720,60.0 L735,60.0 L750,60.0 L765,60.0 L780,60.0 L795,60.0 L810,60.0 L825,60.0 L840,60.0 L855,60.0 L870,60.0 L885,60.0 L900,60.0 L915,60.0 L930,60.0 L945,60.0 L960,60.0 L975,60.0 L990,60.0 L1005,60.0 L1020,60.0 L1035,60.0 L1050,60.0 L1200,60"/>
-          </svg>
-          <span class="trace-dot" aria-hidden="true"></span>
-          <span class="trace-label l-set">setpoint</span>
-          <span class="trace-label l-over">overshoot</span>
-          <span class="trace-label l-settle">settled</span>
-        </figure>
+        <div class="trace" aria-hidden="true"><canvas id="wave"></canvas></div>
       </div>
     </section>
 
@@ -96,12 +86,12 @@
           </div>
           <div class="case-media">
             <figure class="shot shot-photo">
-              <picture><source srcset="assets/rover-arm.webp" type="image/webp"><img src="assets/rover-arm.jpg" alt="The rover and its robotic arm on the lab floor, with the controls laptop on the bench behind" width="1200" height="1281" loading="lazy"></picture>
+              <picture><img src="robotic-arm.jpg.png" alt="The rover and its robotic arm on the lab floor, with the controls laptop on the bench behind" width="1200" height="1281" loading="lazy"></picture>
             </figure>
             <figure class="shot shot-video">
-              <video controls playsinline preload="metadata" poster="assets/robotic-arm-poster.jpg" aria-label="Robotic arm demonstration video" width="720" height="1280">
-                <source src="assets/robotic-arm-demo.mp4" type="video/mp4">
-                <a href="assets/robotic-arm-demo.mp4">Download the robotic arm demonstration</a>
+              <video controls playsinline preload="metadata" poster="robotic-arm-poster.jpg" aria-label="Robotic arm demonstration video" width="720" height="1280">
+                <source src="robotic-arm-demo.mp4" type="video/mp4">
+                <a href="robotic-arm-demo.mp4">Download the robotic arm demonstration</a>
               </video>
               <figcaption>Demo, 38 seconds</figcaption>
             </figure>
@@ -111,9 +101,9 @@
         <article class="case case-park">
           <div class="case-media">
             <figure class="shot shot-video">
-              <video controls playsinline preload="metadata" poster="assets/parking-buddy-poster.jpg" aria-label="Parking Buddy demonstration video" width="480" height="852">
-                <source src="assets/parking-buddy-demo.mp4" type="video/mp4">
-                <a href="assets/parking-buddy-demo.mp4">Download the Parking Buddy demonstration</a>
+              <video controls playsinline preload="metadata" poster="parking-buddy-poster.jpg" aria-label="Parking Buddy demonstration video" width="480" height="852">
+                <source src="parking-buddy-demo.mp4" type="video/mp4">
+                <a href="parking-buddy-demo.mp4">Download the Parking Buddy demonstration</a>
               </video>
               <figcaption>Demo, 17 seconds</figcaption>
             </figure>
