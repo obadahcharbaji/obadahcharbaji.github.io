@@ -64,25 +64,20 @@
   if (cv && cv.getContext) {
     const ctx = cv.getContext('2d');
     const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-    const DURATION = 5200;
+    const DURATION = 8500;
     let w = 0, h = 0, pts = [], start = 0, raf = 0, finished = false;
-
-    // seeded noise so the shape is the same every visit
-    const rng = (s => () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296)(7);
-    const noise = Array.from({ length: 400 }, () => rng() * 2 - 1);
-    const smooth = (x) => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return noise[i % 400] * (1 - u) + noise[(i + 1) % 400] * u; };
 
     const build = () => {
       const r = cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2);
       w = r.width; h = r.height; cv.width = w * d; cv.height = h * d; ctx.setTransform(d, 0, 0, d, 0, 0);
       const mid = h / 2, pad = 14, usable = w - pad * 2, n = Math.ceil(usable / 2);
+      const wl = w < 600 ? 110 : 150, k = (Math.PI * 2) / wl;            // one steady frequency
       pts = [];
       for (let i = 0; i <= n; i++) {
         const u = i / n, x = pad + u * usable;
-        const calm = Math.pow(1 - Math.min(Math.max((u - 0.05) / 0.8, 0), 1), 2.2);   // wild at left, flat at right
-        const wob = Math.sin(x * 0.085) * 0.55 + Math.sin(x * 0.21 + 1.3) * 0.35 + smooth(x * 0.09) * 0.8 + smooth(x * 0.33 + 50) * 0.35;
-        const swing = Math.max(-1, Math.min(1, wob * (0.35 + 0.65 * calm) * 1.05));
-        pts.push([x, mid - swing * calm * h * 0.4]);
+        const fade = 1 - Math.pow(Math.max((u - 0.62) / 0.38, 0), 2) * 0;   // (kept simple: exponential decay below)
+        const env = Math.exp(-4.4 * u) * (u > 0.7 ? 1 - (u - 0.7) / 0.3 : 1) * fade;  // high, then low, then flat
+        pts.push([x, mid - Math.sin(k * (x - pad)) * env * h * 0.42]);
       }
     };
 
@@ -104,7 +99,7 @@
     const tick = now => {
       if (!start) start = now;
       const t = Math.min((now - start) / DURATION, 1);
-      frame(t < 1 ? t * (2 - t) * 0.35 + t * 0.65 : 1);   // brisk start, gentle landing
+      frame(0.5 - Math.cos(Math.PI * t) / 2);   // eases in and out
       if (t < 1) raf = requestAnimationFrame(tick); else finished = true;
     };
 
