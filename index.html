@@ -115,16 +115,17 @@ a{color:inherit}
 .shot figcaption{margin-top:10px;font-size:14px;color:var(--on-dark)}
 .shot-photo{display:flex}
 
-/* team badge under the robotic arm media */
-.team-badge{grid-column:1/-1;display:grid;gap:22px;padding:26px 28px;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:8px}
-.team-top{display:flex;align-items:center;gap:24px}
-.team-logo{flex:none;width:96px;height:auto}
+/* team badge under the robotic arm media: two equal halves, then centred text */
+.team-badge{grid-column:1/-1;overflow:hidden;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:8px;text-align:center}
+.logo-row{display:grid;grid-template-columns:1fr 1fr}
+.logo-cell{display:grid;place-items:center;padding:32px 24px}
+.logo-cell+.logo-cell{border-left:1px solid var(--line-dark)}
+.team-logo,.uw-logo{display:block;height:88px;width:auto;max-width:100%;object-fit:contain}
+.team-logo{height:100px}
+.team-text{padding:24px 24px 26px;border-top:1px solid var(--line-dark)}
 .team-label{font-size:15px;font-weight:500;color:#7FCBFF}
-.team-name{margin:2px 0 6px;font:800 clamp(20px,2.2vw,26px)/1.15 var(--head);letter-spacing:-.035em;color:var(--white)}
-.team-note{font-size:15px;color:var(--on-dark)}
-.uw-row{border-top:1px solid var(--line-dark);padding-top:22px}
-.uw-logo{display:block;height:58px;width:auto}
-@media(max-width:480px){.team-top{flex-direction:column;align-items:flex-start;gap:16px}.team-badge{padding:22px 20px}.uw-logo{height:50px}}
+.team-name{margin:2px 0 0;font:800 clamp(20px,2.2vw,26px)/1.15 var(--head);letter-spacing:-.035em;color:var(--white)}
+@media(max-width:480px){.logo-row{grid-template-columns:1fr}.logo-cell{padding:24px 20px}.logo-cell+.logo-cell{border-left:0;border-top:1px solid var(--line-dark)}.team-logo,.uw-logo{height:76px}.team-logo{height:88px}}
 
 /* about */
 .about{background:linear-gradient(180deg,var(--white) 0%,#EEF7FD 100%)}
@@ -331,15 +332,14 @@ a{color:inherit}
               </video>
             </figure>
             <div class="team-badge">
-              <div class="team-top">
-                <img class="team-logo" src="rover-team-logo.png" alt="UWR rover team badge" width="150" height="143" onerror="this.remove()">
-                <div class="team-text">
-                  <p class="team-label">Built with</p>
-                  <p class="team-name">University of Windsor Rover Team</p>
-                  <p class="team-note">The arm mounts on the team&rsquo;s rover.</p>
-                </div>
+              <div class="logo-row">
+                <div class="logo-cell"><img class="team-logo" src="rover-team-logo.png" alt="UWR rover team badge" width="150" height="143" onerror="this.remove()"></div>
+                <div class="logo-cell"><img class="uw-logo" src="university-logo.png" alt="University of Windsor" width="640" height="237" onerror="this.remove()"></div>
               </div>
-              <div class="uw-row"><img class="uw-logo" src="university-logo.png" alt="University of Windsor" width="640" height="237" onerror="this.remove()"></div>
+              <div class="team-text">
+                <p class="team-label">Built with</p>
+                <p class="team-name">University of Windsor Rover Team</p>
+              </div>
             </div>
           </div>
         </article>
