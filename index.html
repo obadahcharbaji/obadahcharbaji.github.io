@@ -118,14 +118,15 @@ a{color:inherit}
 /* team badge under the robotic arm media: two equal halves, then centred text */
 .team-badge{grid-column:1/-1;overflow:hidden;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:8px;text-align:center}
 .logo-row{display:grid;grid-template-columns:1fr 1fr}
-.logo-cell{display:grid;place-items:center;padding:32px 24px}
+.logo-cell{display:grid;place-items:center;padding:28px 24px}
 .logo-cell+.logo-cell{border-left:1px solid var(--line-dark)}
-.team-logo,.uw-logo{display:block;height:88px;width:auto;max-width:100%;object-fit:contain}
-.team-logo{height:100px}
+.team-logo,.uw-logo{display:block;width:auto;max-width:100%;object-fit:contain}
+.team-logo{height:136px}
+.uw-logo{height:78px}
 .team-text{padding:24px 24px 26px;border-top:1px solid var(--line-dark)}
 .team-label{font-size:15px;font-weight:500;color:#7FCBFF}
 .team-name{margin:2px 0 0;font:800 clamp(20px,2.2vw,26px)/1.15 var(--head);letter-spacing:-.035em;color:var(--white)}
-@media(max-width:480px){.logo-row{grid-template-columns:1fr}.logo-cell{padding:24px 20px}.logo-cell+.logo-cell{border-left:0;border-top:1px solid var(--line-dark)}.team-logo,.uw-logo{height:76px}.team-logo{height:88px}}
+@media(max-width:480px){.logo-row{grid-template-columns:1fr}.logo-cell{padding:24px 20px}.logo-cell+.logo-cell{border-left:0;border-top:1px solid var(--line-dark)}.team-logo{height:116px}.uw-logo{height:66px}}
 
 /* about */
 .about{background:linear-gradient(180deg,var(--white) 0%,#EEF7FD 100%)}
