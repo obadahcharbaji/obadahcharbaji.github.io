@@ -115,18 +115,14 @@ a{color:inherit}
 .shot figcaption{margin-top:10px;font-size:14px;color:var(--on-dark)}
 .shot-photo{display:flex}
 
-/* team badge under the robotic arm media: two equal halves, then centred text */
-.team-badge{grid-column:1/-1;overflow:hidden;background:var(--ink-2);border:1px solid var(--line-dark);border-radius:8px;text-align:center}
-.logo-row{display:grid;grid-template-columns:1fr 1fr}
-.logo-cell{display:grid;place-items:center;padding:28px 24px}
-.logo-cell+.logo-cell{border-left:1px solid var(--line-dark)}
-.team-logo,.uw-logo{display:block;width:auto;max-width:100%;object-fit:contain}
-.team-logo{height:136px}
-.uw-logo{height:78px}
-.team-text{padding:24px 24px 26px;border-top:1px solid var(--line-dark)}
-.team-label{font-size:15px;font-weight:500;color:#7FCBFF}
-.team-name{margin:2px 0 0;font:800 clamp(20px,2.2vw,26px)/1.15 var(--head);letter-spacing:-.035em;color:var(--white)}
-@media(max-width:480px){.logo-row{grid-template-columns:1fr}.logo-cell{padding:24px 20px}.logo-cell+.logo-cell{border-left:0;border-top:1px solid var(--line-dark)}.team-logo{height:116px}.uw-logo{height:66px}}
+/* wide facts strip with the big rover badge */
+.case-arm{row-gap:36px}
+.case-foot{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(28px,6vw,96px);align-items:center;margin-top:8px}
+.case-foot .facts{max-width:none;margin:0}
+.case-foot .facts div{grid-template-columns:150px 1fr;padding:18px 0;font-size:17px}
+.rover-logo{display:block;width:clamp(160px,17vw,200px);height:auto;justify-self:center}
+@media(max-width:900px){.case-foot{grid-template-columns:1fr;gap:28px}.rover-logo{justify-self:start;width:150px}}
+@media(max-width:480px){.case-foot .facts div{grid-template-columns:90px 1fr;padding:14px 0;font-size:16px}}
 
 /* about */
 .about{background:linear-gradient(180deg,var(--white) 0%,#EEF7FD 100%)}
@@ -316,11 +312,6 @@ a{color:inherit}
               <li>Tracked down controller faults, power issues, encoder feedback problems and CAN communication errors.</li>
               <li>Ran component-level and system-level tests, and supported URDF modeling.</li>
             </ul>
-            <dl class="facts">
-              <div><dt>Team</dt><dd>Two-person controls subteam</dd></div>
-              <div><dt>Hardware</dt><dd>BLDC motors, motor controllers, encoders</dd></div>
-              <div><dt>Software</dt><dd>CAN, ROS 2, URDF</dd></div>
-            </dl>
           </div>
           <div class="case-media">
             <figure class="shot shot-photo">
@@ -332,17 +323,15 @@ a{color:inherit}
                 <a href="robotic-arm-demo.mp4">Download the robotic arm demonstration</a>
               </video>
             </figure>
-            <div class="team-badge">
-              <div class="logo-row">
-                <div class="logo-cell"><img class="team-logo" src="rover-team-logo.png" alt="UWR rover team badge" width="150" height="143" onerror="this.remove()"></div>
-                <div class="logo-cell"><img class="uw-logo" src="university-logo.png" alt="University of Windsor" width="640" height="237" onerror="this.remove()"></div>
-              </div>
-              <div class="team-text">
-                <p class="team-label">Built with</p>
-                <p class="team-name">University of Windsor Rover Team</p>
-              </div>
-            </div>
           </div>
+      <div class="case-foot">
+          <dl class="facts">
+              <div><dt>Team</dt><dd>Two-person controls subteam</dd></div>
+              <div><dt>Hardware</dt><dd>BLDC motors, motor controllers, encoders</dd></div>
+              <div><dt>Software</dt><dd>CAN, ROS 2, URDF</dd></div>
+            </dl>
+          <img class="rover-logo" src="rover-team-logo.png" alt="UWR rover team badge" width="150" height="143" onerror="this.remove()">
+        </div>
         </article>
 
         <article class="case case-park">
