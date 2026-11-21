@@ -195,12 +195,11 @@ a{color:inherit}
 .clip{justify-self:center;width:100%;max-width:340px;transform:rotate(3deg);filter:drop-shadow(0 22px 26px rgba(6,20,34,.35))}
 .clip-svg{display:block;width:100%;height:auto;overflow:visible}
 .sq{fill:none;stroke:var(--ink);stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round}
-.sq-title{fill:none;stroke:var(--ink);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .rule{stroke:#DCE9F3;stroke-width:1.5}
 .box{fill:none;stroke:var(--ink);stroke-width:3}
 .tick{fill:none;stroke:var(--red-btn);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
 .pencil{transform:translate(300px,60px)}
-@keyframes pencilmove{0.0%{transform:translate(300px,60px);animation-timing-function:ease-in-out}6.916%{transform:translate(300px,60px);animation-timing-function:ease-in-out}14.523%{transform:translate(69px,150px);animation-timing-function:linear}16.321%{transform:translate(76px,158px);animation-timing-function:linear}20.47%{transform:translate(91px,141px);animation-timing-function:ease-in-out}25.588%{transform:translate(91px,141px);animation-timing-function:ease-in-out}33.195%{transform:translate(69px,215px);animation-timing-function:linear}34.993%{transform:translate(76px,223px);animation-timing-function:linear}39.142%{transform:translate(91px,206px);animation-timing-function:ease-in-out}44.26%{transform:translate(91px,206px);animation-timing-function:ease-in-out}51.867%{transform:translate(69px,280px);animation-timing-function:linear}53.665%{transform:translate(76px,288px);animation-timing-function:linear}57.815%{transform:translate(91px,271px);animation-timing-function:ease-in-out}62.932%{transform:translate(91px,271px);animation-timing-function:ease-in-out}70.539%{transform:translate(69px,345px);animation-timing-function:linear}72.337%{transform:translate(76px,353px);animation-timing-function:linear}76.487%{transform:translate(91px,336px);animation-timing-function:ease-in-out}86.169%{transform:translate(91px,336px);animation-timing-function:ease-in-out}97.234%{transform:translate(292px,428px);animation-timing-function:ease-in-out}100.0%{transform:translate(292px,428px);animation-timing-function:ease-in-out}}
+@keyframes pencilmove{0.0%{transform:translate(300px,60px);animation-timing-function:ease-in-out}6.916%{transform:translate(300px,60px);animation-timing-function:ease-in-out}14.523%{transform:translate(69px,150px);animation-timing-function:linear}16.321%{transform:translate(76px,158px);animation-timing-function:linear}20.47%{transform:translate(91px,141px);animation-timing-function:ease-in-out}25.588%{transform:translate(91px,141px);animation-timing-function:ease-in-out}33.195%{transform:translate(69px,215px);animation-timing-function:linear}34.993%{transform:translate(76px,223px);animation-timing-function:linear}39.142%{transform:translate(91px,206px);animation-timing-function:ease-in-out}44.26%{transform:translate(91px,206px);animation-timing-function:ease-in-out}51.867%{transform:translate(69px,280px);animation-timing-function:linear}53.665%{transform:translate(76px,288px);animation-timing-function:linear}57.815%{transform:translate(91px,271px);animation-timing-function:ease-in-out}62.932%{transform:translate(91px,271px);animation-timing-function:ease-in-out}70.539%{transform:translate(69px,345px);animation-timing-function:linear}72.337%{transform:translate(76px,353px);animation-timing-function:linear}76.487%{transform:translate(91px,336px);animation-timing-function:ease-in-out}86.169%{transform:translate(91px,336px);animation-timing-function:ease-in-out}97.234%{transform:translate(292px,446px);animation-timing-function:ease-in-out}100.0%{transform:translate(292px,446px);animation-timing-function:ease-in-out}}
 @keyframes drawit{to{stroke-dashoffset:0}}
 @keyframes dimsq{to{stroke:#A9BACA}}
 @keyframes redsq{to{stroke:var(--red-btn)}}
@@ -214,7 +213,7 @@ a{color:inherit}
 .clip.is-on .sq2{animation:dimsq .3s ease-out 4.18s both}
 .clip.is-on .sq3{animation:redsq .3s ease-out 5.40s both}
 .clip.is-reset *{animation:none!important}
-.clip.is-static .tick,.clip.is-static .clip.is-static .pencil{transform:translate(292px,428px)}
+.clip.is-static .tick,.clip.is-static .clip.is-static .pencil{transform:translate(292px,446px)}
 .clip.is-static .sq0,.clip.is-static .sq1,.clip.is-static .sq2{stroke:#A9BACA}.clip.is-static .sq3{stroke:var(--red-btn)}
 @media(max-width:900px){.contact-grid{grid-template-columns:1fr}.clip{justify-self:start;max-width:300px;margin-top:8px}}
 
@@ -424,7 +423,7 @@ a{color:inherit}
   <rect x="32" y="48" width="296" height="374" rx="8" fill="#FFFFFF"/>
   <rect x="118" y="8" width="124" height="52" rx="12" fill="#C9DAE8"/>
   <rect x="136" y="20" width="88" height="14" rx="7" fill="#8FA9BE"/>
-  <path class="sq-title" d="M62 102 q6 -9 12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0 t12 0"/>
+    <g transform="translate(0 -18)">
     <line class="rule" x1="52" y1="180" x2="318" y2="180"/>
     <rect class="box" x="62" y="133" width="34" height="34" rx="6"/>
     <path class="sq sq0" d="M114 151 q5 -7 10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0 t10 0"/>
@@ -446,6 +445,7 @@ a{color:inherit}
     <rect x="-7" y="-122" width="14" height="96" fill="#F2B705"/><rect x="-7" y="-122" width="4" height="96" fill="#D99F00"/>
     <rect x="-7" y="-134" width="14" height="12" fill="#B8C7D4"/><rect x="-7" y="-152" width="14" height="18" rx="4" fill="#FF7A66"/>
   </g></g>
+  </g>
 </svg></div></div>
     </section>
   </main>
